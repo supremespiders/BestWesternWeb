@@ -1,0 +1,73 @@
+<!-- <p-table style="min-height: 400px" #myTable responsiveLayout="scroll" [value]="logs" [rows]="10" dataKey="id" [showCurrentPageReport]="true"
+           [rowHover]="true"   currentPageReportTemplate="Showing {totalRecords} entries">
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        <h3>Logs</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr >
+        <th  pSortableColumn="timeStamp">
+          Date
+          <p-sortIcon field="timeStamp"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="logLevel">
+            severity
+            <p-sortIcon field="logLevel"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="callSite">
+            Site
+            <p-sortIcon field="callSite"></p-sortIcon>
+        </th>
+        <th >message</th>
+      </tr>
+      <tr>
+        <th>
+          <p-calendar
+            [(ngModel)]="dateFilters"
+            appendTo="body"
+            selectionMode="range"
+            [readonlyInput]="false"
+            dateFormat="dd.mm.yy"
+            (onSelect)="myTable.filter($event, 'timeStamp', 'dateRangeFilter')">
+          </p-calendar>
+        </th>
+        <th>
+          <p-columnFilter field="logLevel" matchMode="in" [showMatchModes]="false" [showOperator]="false" [showMenu]="false">
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <p-multiSelect [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any">
+                <ng-template let-option pTemplate="item">
+                  <span>{{option.label}}</span>
+                </ng-template>
+              </p-multiSelect>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-log>
+      <tr [style.color]="log.logLevel=='ERROR' ? 'red':''">
+        <td>{{log.timeStamp | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td>{{log.logLevel}}</td>
+        <td>
+            {{log.callSite}}
+        </td>
+        <td>
+          <div class="msg">
+            {{log.message}}
+          </div>
+
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>-->
+
+<ng-template ngFor let-log [ngForOf]="logs" let-i="index" >
+  <div class="mt-1">
+    <div style="color: cornflowerblue" class="ml-2 inline">{{log.timeStamp | date :'dd/MM/yyy HH:mm:ss' }} : </div>
+      <div  [ngClass]="{'red':log.logLevel==='ERROR'}" class="ml-1 inline">{{log.message}}</div>
+  </div>
+</ng-template>
+

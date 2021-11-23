@@ -1,0 +1,34 @@
+<div class="flex justify-content-center align-items-center" style="height: 100%;">
+  <p-card class="shadow-6 md:w-4 w-7">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <p style="color: red">{{error}}</p>
+      <div class="p-fluid" style="margin: 10px 0px;">
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" pInputText type="text" formControlName="username" class="form-control" name="username">
+          <div [hidden]="loginForm.controls['username'].valid || !loginForm.controls['username'].dirty" style="color: red">
+            Login is required
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" pInputText type="password" formControlName="password" class="form-control" name="password">
+          <div [hidden]="loginForm.controls['password'].valid || !loginForm.controls['password'].dirty" style="color: red">
+            Password is required
+          </div>
+        </div>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+            <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"></button>
+          </div>
+          <div class="ui-grid-col-4"></div>
+        </div>
+      </div>
+    </form>
+  </p-card>
+
+</div>
+

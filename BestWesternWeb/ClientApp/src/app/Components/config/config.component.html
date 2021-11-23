@@ -1,0 +1,64 @@
+<p-toast  [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>
+<p-progressSpinner  *ngIf="!loaded"></p-progressSpinner>
+<div *ngIf="loaded" class="flex flex-wrap justify-content-center">
+  <div class="p-card shadow-5 md:w-8 mt-4 w-11 p-3 pb-0">
+    <div class="p-card-title">
+      Input
+    </div>
+    <div class="p-card-content">
+      <div class="grid p-fluid">
+        <div class="col">
+          <textarea [autoResize]=true class="w-12" [(ngModel)]="config.input" rows="1" style="max-height: 100px" pInputTextarea></textarea>
+
+        </div>
+              </div>
+
+      <div class="flex justify-content-end">
+        <p-fileUpload chooseLabel="Upload Input File"  (uploadHandler)="onUpload($event)" [customUpload]="true" mode="basic" [auto]="true" name="myfile[]"></p-fileUpload>
+<!--        url="./File/upload"-->
+      </div>
+    </div>
+  </div>
+
+  <div class="p-card shadow-5 md:w-8 mt-2 w-11 p-3 pb-0 pt-0">
+    <div class="p-card-content">
+      <div class="grid p-fluid align-items-center formgroup-inline">
+        <div class="field col-3">
+          <label for="threads">Threads</label>
+          <p-inputNumber  [min]=1 [max]=10 inputId="threads" [(ngModel)]="config.threads"></p-inputNumber>
+        </div>
+          <div class="field-checkbox">
+            <p-checkbox [(ngModel)]="config.logToUI" [binary]=true inputId="binary"></p-checkbox>
+            <label for="binary">{{config.logToUI ? "Log to UI" : "don't log"}}</label>          </div>
+          <div class="field-checkbox mr-0">
+            <p-checkbox [(ngModel)]="config.notify" [binary]=true inputId="notify"></p-checkbox>
+            <label for="notify">{{config.notify ? "Notify" : "Don't Notify"}}</label>
+          </div>
+        </div>
+      <div class="flex justify-content-end">
+        <button pRipple pButton label="Start" icon="pi pi-play" class="p-button shadow-6 justify-content-center" (click)=startWork()></button>
+        <button pRipple pButton label="Stop" icon="pi pi-power-off" class="ml-2 shadow-6 p-button justify-content-center" (click)=stopWork()></button>
+        <button pRipple pButton label="Save" icon="pi pi-save" class="ml-2 p-button shadow-6 p-button-success justify-content-center" (click)=saveConfig()></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-card shadow-5 md:w-8 mt-2 w-11 p-3 pb-0 ">
+    <div class="p-card-title">
+      Amazon Account
+    </div>
+    <div class="p-card-content">
+      <div class="grid p-fluid">
+        <div class="field col-12">
+          <label for="username">Username</label>
+          <input id="username" type="text" [(ngModel)]="config.username" pInputText/>
+        </div>
+        <div class="field col-12">
+          <label for="password">Password</label>
+          <p-password [(ngModel)]="config.password" inputId="password" [feedback]="false" id="password"
+                      [toggleMask]="true"></p-password>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.wrapper,.container,html,body{
+  margin: 0px;
+  height: 100%;
+}
+body{
+  background-color: #f0f0f0;
+  font-size: 0.9rem;
+}
+.p-component {
+  font-size: 0.9rem;
+}
+.container {
+  overflow-y: auto;
+}
+.p-card .p-card-title{
+  font-size: 1.2rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper header {
+  height: 60px;
+}
+.wrapper footer {
+  min-height: 50px;
+}
+.wrapper .container {
+  flex:1 1 auto;
+  display: flex;
+  /*margin: auto;*/
+}
+.p-menu{
+  width: auto;
+}
+.p-progressbar{
+  height: 0.3rem;
+}
+
+.p-toast{
+  width: 50rem !important;
+  display: inline-block !important;
+}
+

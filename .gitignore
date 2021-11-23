@@ -1,0 +1,3 @@
+﻿# Project exclude paths
+/BestWesternWeb/ClientApp/dist/
+/BestWesternWeb/ClientApp/node_modules/

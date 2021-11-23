@@ -1,0 +1,40 @@
+::ng-deep.p-datatable .p-datatable-thead > tr > th{
+  /*text-align: center;*/
+  /*width: 200px;*/
+}
+
+::ng-deep.p-datatable-responsive-scroll>.p-datatable-wrapper {
+overflow: visible!important;
+}
+
+::ng-deep.p-datatable .p-datatable-tbody > tr > td{
+  /*width: 200px;*/
+}
+
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+
+.msg{
+  white-space: pre-wrap;
+  /*white-space: nowrap;*/
+  min-width: 400px;
+  /*height: 2rem;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  /*padding: 0.7rem 0.7rem;*/
+}
+
+.giveMeEllipsis {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*-webkit-box-orient: vertical;*/
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-height: 1rem;        /* fallback */
+  max-height: 2rem;       /* fallback */
+}

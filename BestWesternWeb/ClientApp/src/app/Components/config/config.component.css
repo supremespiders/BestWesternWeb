@@ -1,0 +1,12 @@
+.field{
+  margin-bottom: 0;
+}
+::ng-deep.p-fileupload
+{
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 6%), 0px 7px 9px rgb(0 0 0 / 12%), 0px 20px 25px -8px rgb(0 0 0 / 18%) !important;
+}
+
+::ng-deep.p-progress-spinner{
+  height: 150px!important;
+  width: 150px!important;
+}

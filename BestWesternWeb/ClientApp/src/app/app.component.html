@@ -1,0 +1,26 @@
+<!--<div class="flex flex-column align-items-stretch">-->
+<!--    <app-top-bar class="h-3rem flex bg-yellow-100"></app-top-bar>-->
+<!--    <router-outlet  class="container flex-1 justify-content-center md:w-8"></router-outlet>-->
+<!--  <app-bottom-bar class="h-3rem flex bg-yellow-100"></app-bottom-bar>-->
+<!--</div>-->
+
+<div class="wrapper">
+  <header *ngIf="isLoggedIn" class="bg-primary">
+    <app-top-bar></app-top-bar>
+  </header>
+
+  <div class="container flex flex-column">
+    <router-outlet ></router-outlet>
+  </div>
+  <footer *ngIf="isLoggedIn">
+    <app-bottom-bar></app-bottom-bar>
+  </footer>
+</div>
+
+
+<!--<div style="height: 10vh;background-color: aquamarine"></div>-->
+
+
+<!--<p-button type="text" (click)="display = true" icon="pi pi-plus" label="Show"></p-button>-->
+
+<!--<button pButton  pRipple type="button" label="Click" ></button>-->

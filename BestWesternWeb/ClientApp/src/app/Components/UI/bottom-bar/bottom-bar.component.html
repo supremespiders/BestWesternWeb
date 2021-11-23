@@ -1,0 +1,15 @@
+<p-progressBar [value]="progress" [showValue]="false"></p-progressBar>
+<div style="height: 90%" class="flex bg-white align-items-center" >
+  <div class="flex align-items-center">
+    <div *ngIf="isWorking"  class="ml-1 mt-2 font-bold text-green-500">On</div>
+    <div *ngIf="!isWorking"  class="ml-1 mt-2 font-bold text-orange-500">Off</div>
+    <div class="ml-4 mt-2 w-12 font-bold">{{log}}</div>
+  </div>
+</div>
+<!--<footer class="flex">-->
+<!--</footer>-->
+<!--<div class="flex-1 bg-green-100 block">-->
+<!-- hello-->
+<!--</div>-->
+
+<!--style="height: 10vh;background-color: aquamarine; position: fixed;bottom: 0;width: 100%"-->
