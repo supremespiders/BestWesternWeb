@@ -1,21 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {Log} from "../../Models/Log";
 import {ScraperService} from "../../Services/scraper.service";
 import {Table} from "primeng/table";
 import {FilterService} from "primeng/api";
+import {HubService} from "../../Services/hub.service";
 
 @Component({
   selector: 'app-logs',
   templateUrl: './logs.component.html',
   styleUrls: ['./logs.component.css']
 })
-export class LogsComponent implements OnInit {
+export class LogsComponent implements OnInit,AfterViewInit {
   @ViewChild('myTable') private _table: Table;
+  @ViewChildren("logDiv") logDivs: QueryList<ElementRef>;
   logs:Log[];
   statuses: any;
   dateFilters: any;
 
-  constructor(private scraper: ScraperService,private filterService: FilterService) {
+  constructor(private scraper: ScraperService,private filterService: FilterService,private hub: HubService) {
     var _self=this;
     this.logs=[{
       id:1,
@@ -48,6 +50,18 @@ export class LogsComponent implements OnInit {
       this.logs=value;
       this.logs.forEach(x=>x.timeStamp=new Date(x.timeStamp));
     })
+
+    this.hub.connection.on("Log", (x) => {
+      this.logs.push(x);
+    });
+  }
+
+  ngAfterViewInit() :void{
+    this.logDivs.changes.subscribe(() => {
+      if (this.logDivs && this.logDivs.last) {
+        this.logDivs.last.nativeElement.focus();
+      }
+    });
   }
 
 }

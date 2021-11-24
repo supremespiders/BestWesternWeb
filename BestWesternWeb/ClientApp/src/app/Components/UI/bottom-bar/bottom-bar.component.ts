@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HubService} from "../../../Services/hub.service";
+import {Log} from "../../../Models/Log";
 
 @Component({
   selector: 'app-bottom-bar',
@@ -17,14 +18,14 @@ export class BottomBarComponent implements OnInit {
     this.hub.connection.on("ScraperStatus", (x) => {
       this.isWorking = x;
     });
-    this.hub.connection.on("Log", (x) => {
-      this.log = x;
+    this.hub.connection.on("Log", (x:Log) => {
+      this.log = x.message;
     });
     this.hub.connection.on("Progress", (x,total) => {
       this.progress = x*100/total;
     });
     this.hub.connection.on("Error", (x) => {
-      this.log = x;
+     // this.log = x;
     });
     this.hub.connection.on("Display", (x) => {
       this.log = x;

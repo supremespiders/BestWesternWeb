@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BestWesternWeb.Models;
+using DataAccess.Models;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using ScraperLib.Models;
@@ -39,6 +40,8 @@ namespace BestWesternWeb.Services
 
         private async void OnError(object sender, string e)
         {
+            var log = new Log { Id = 1, Message = e, LogLevel = "Error", TimeStamp = DateTime.Now };
+            await _hubContext.Clients.All.Log(log);
             await _hubContext.Clients.All.Error(e);
         }
 
@@ -54,12 +57,19 @@ namespace BestWesternWeb.Services
 
         private async void OnLog(object sender, string e)
         {
-            await _hubContext.Clients.All.Log(e);
+            var log = new Log { Id = 1, Message = e, LogLevel = "Info", TimeStamp = DateTime.Now };
+            await _hubContext.Clients.All.Log(log);
             _logger.LogInformation(e);
+        }
+
+        private async Task CleanLogs()
+        {
+            
         }
 
         public async Task Start()
         {
+            
             // _logger.LogInformation("this is a good piece if information");
             // _logger.LogError("Exception : this is a very big exception with lines wrap\nits called on one of the line i don't know\nmaybe very long a lot long");
             IsWorking = true;

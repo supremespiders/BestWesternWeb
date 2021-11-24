@@ -64,10 +64,16 @@
     </ng-template>
   </p-table>-->
 
-<ng-template ngFor let-log [ngForOf]="logs" let-i="index" >
-  <div class="mt-1">
-    <div style="color: cornflowerblue" class="ml-2 inline">{{log.timeStamp | date :'dd/MM/yyy HH:mm:ss' }} : </div>
-      <div  [ngClass]="{'red':log.logLevel==='ERROR'}" class="ml-1 inline">{{log.message}}</div>
-  </div>
-</ng-template>
+<!--<div class="bg-green-100 list-container">-->
+<!--  <ng-template class="log-item" ngFor #logDiv let-log [ngForOf]="logs" let-i="index" >-->
+    <div tabindex="1" #logDiv class="log-item" *ngFor="let log of logs">
+      <div class="mt-1">
+        <div style="color: cornflowerblue" class="ml-2 inline">{{log.timeStamp | date :'dd/MM/yyy HH:mm:ss' }} : </div>
+        <div  [ngClass]="{'red':log.logLevel==='ERROR'}" class="ml-1 inline">{{log.message}}</div>
+      </div>
+    </div>
+
+<!--  </ng-template>-->
+<!--</div>-->
+
 

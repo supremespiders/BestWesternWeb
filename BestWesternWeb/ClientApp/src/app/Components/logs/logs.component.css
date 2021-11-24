@@ -18,6 +18,16 @@ overflow: visible!important;
   color: green;
 }
 
+div.list-container {
+  height: 150px;
+  overflow: auto;
+  border: solid 1px black;
+}
+
+div.log-item {
+  outline: none;
+}
+
 .msg{
   white-space: pre-wrap;
   /*white-space: nowrap;*/

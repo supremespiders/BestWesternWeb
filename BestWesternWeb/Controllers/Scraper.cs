@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using BestWesternWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,20 +30,21 @@ namespace BestWesternWeb.Controllers
         }
 
         // GET: ScrapeController/Details/5
-        public ActionResult Start()
+        public async Task<ActionResult> Start()
         {
             if (_scraperService.IsWorking)
-                return Ok(new{msg="already working"});
+                return Ok(new { msg = "already working" });
+            await _context.Database.ExecuteSqlRawAsync("DELETE FROM Logs;");
             _ = _scraperService.Start();
-            return Ok(new{msg="started"});
+            return Ok(new { msg = "started" });
         }
+
         public ActionResult Cancel()
         {
             if (!_scraperService.IsWorking)
-                return Ok(new{msg="not working"});
+                return Ok(new { msg = "not working" });
             _scraperService.Stop();
-            return Ok(new{msg="canceled"});
+            return Ok(new { msg = "canceled" });
         }
-
     }
 }
